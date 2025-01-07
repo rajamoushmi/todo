@@ -2,10 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>To-Do</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    Hello
+    <div class="container">
+        <div class="todo-app">
+            <h2>To-Do list <img src="./images/img1.jpg"></h2>
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add your task">
+                <button id="add-btn">Add</button>
+            </div>
+            <div class="action-buttons">
+                <button id="clear-all" class="clear-btn">Clear All</button>
+            </div>
+            <ul id="list-container">
+                <!-- Tasks will be added here -->
+            </ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
