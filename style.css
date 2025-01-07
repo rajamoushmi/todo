@@ -1,71 +1,87 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', 'Georgia', sans-serif;
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
     box-sizing: border-box;
 }
 
 body {
     background: #f0f2f5;
+    min-height: 100vh;
 }
 
 .container {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(45deg, #c2d6d6, #e6ffff, #99ebff);
+    background-size: 200% 200%;
     padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .todo-app {
     width: 100%;
     max-width: 540px;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(230, 255, 255, 0.95);
     margin: 20px auto;
     padding: 40px 30px;
     border-radius: 20px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 15px 30px rgba(194, 214, 214, 0.3),
+                0 5px 15px rgba(153, 235, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 }
 
 .todo-app:hover {
     transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(194, 214, 214, 0.35),
+                0 10px 20px rgba(153, 235, 255, 0.25);
 }
 
 .todo-app h2 {
-    color: #2d3436;
+    color: #4d6666;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
     margin-bottom: 30px;
-    font-size: 2em;
+    font-size: 2.2em;
     font-weight: 600;
+    letter-spacing: -0.5px;
 }
 
 .todo-app h2 img {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
     object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }   
 
 .row {
     display: flex;
     align-items: center;
-    background: #f8f9fa;
-    border-radius: 50px;
+    background: #ffffff;
+    border-radius: 16px;
     padding: 0 15px;
     margin-bottom: 25px;
-    border: 2px solid #e9ecef;
+    border: 2px solid #c2d6d6;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
 }
 
 .row:focus-within {
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #99ebff;
+    box-shadow: 0 0 0 3px rgba(153, 235, 255, 0.2);
 }
 
 input {
@@ -75,33 +91,30 @@ input {
     background: transparent;
     padding: 15px;
     font-size: 16px;
-    color: #2d3436;
+    color: #4d6666;
 }
 
 input::placeholder {
-    color: #a0a0a0;
+    color: #88a6a6;
+    font-weight: 300;
 }
 
-button {
+#add-btn {
+    background: linear-gradient(45deg, #99ebff, #c2d6d6);
+    color: white;
+    font-weight: 500;
+    padding: 12px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(153, 235, 255, 0.3);
     border: none;
     outline: none;
-    padding: 15px 30px;
-    background: #667eea;
-    color: white;
-    font-size: 16px;
     cursor: pointer;
-    border-radius: 25px;
-    transition: all 0.3s ease;
 }
 
-button:hover {
-    background: #764ba2;
+#add-btn:hover {
+    background: linear-gradient(45deg, #7de5ff, #a8c6c6);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-button:active {
-    transform: translateY(0);
+    box-shadow: 0 6px 20px rgba(153, 235, 255, 0.4);
 }
 
 ul {
@@ -111,60 +124,100 @@ ul {
 ul li {
     list-style: none;
     font-size: 17px;
-    padding: 15px 15px 15px 50px;
+    padding: 16px 20px 16px 50px;
     user-select: none;
     cursor: pointer;
     position: relative;
-    background: #f8f9fa;
+    background: #ffffff;
     margin-bottom: 12px;
-    border-radius: 10px;
+    border-radius: 12px;
     transition: all 0.3s ease;
-    border-left: 4px solid #667eea;
-    display: flex;
-    align-items: center;
-    padding-right: 45px;
+    border-left: 4px solid #99ebff;
+    box-shadow: 0 2px 5px rgba(194, 214, 214, 0.15);
+    color: #4d6666;
 }
 
 ul li:hover {
-    background: #f1f3f5;
+    background: #e6ffff;
     transform: translateX(5px);
+    box-shadow: 0 4px 10px rgba(153, 235, 255, 0.2);
 }
 
-ul li::before {
-    content: '';
+.delete-btn {
     position: absolute;
-    height: 24px;
-    width: 24px;
-    border-radius: 50%;
-    background-color: #e9ecef;
-    border: 2px solid #667eea;
+    right: 10px;
     top: 50%;
-    left: 15px;
     transform: translateY(-50%);
+    background: #99ebff;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    opacity: 0;
     transition: all 0.3s ease;
+}
+
+ul li:hover .delete-btn {
+    opacity: 1;
+    right: 15px;
+}
+
+.delete-btn:hover {
+    background: #7de5ff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.action-buttons {
+    margin: 25px 0;
+}
+
+.clear-btn {
+    background: linear-gradient(45deg, #c2d6d6, #99ebff);
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(153, 235, 255, 0.2);
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.clear-btn:hover:not(:disabled) {
+    background: linear-gradient(45deg, #a8c6c6, #7de5ff);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(153, 235, 255, 0.3);
+}
+
+.clear-btn:disabled {
+    background: #c2d6d6;
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 ul li.checked {
-    color: #a0a0a0;
+    color: #88a6a6;
     text-decoration: line-through;
-    background: #f8f9fa;
-    border-left-color: #dc3545;
-    position: relative;
-    transition: all 0.3s ease;
+    border-left-color: #c2d6d6;
+    background: #f5ffff;
 }
 
 ul li.checked::before {
     content: '';
     position: absolute;
-    height: 24px;
-    width: 24px;
-    border-radius: 50%;
-    background-color: #dc3545;
-    border: 2px solid #dc3545;
-    top: 50%;
     left: 15px;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background-color: #c2d6d6;
     transform: translateY(-50%);
-    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(194, 214, 214, 0.3);
 }
 
 ul li.checked::after {
@@ -172,19 +225,53 @@ ul li.checked::after {
     position: absolute;
     left: 21px;
     top: 50%;
-    width: 12px;
-    height: 6px;
+    width: 10px;
+    height: 5px;
     border-left: 2px solid white;
     border-bottom: 2px solid white;
     transform: translateY(-70%) rotate(-45deg);
-    transition: all 0.3s ease;
 }
 
-/* Animation for new items */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .todo-app {
+        margin: 10px;
+        padding: 25px 20px;
+    }
+
+    .todo-app h2 {
+        font-size: 1.8em;
+    }
+
+    .row {
+        flex-direction: column;
+        padding: 12px;
+    }
+
+    input {
+        width: 100%;
+        margin-bottom: 12px;
+        text-align: center;
+    }
+
+    #add-btn {
+        width: 100%;
+        padding: 14px;
+    }
+
+    ul li {
+        font-size: 15px;
+        padding: 14px 45px 14px 45px;
+    }
+}
+
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(-20px);
     }
     to {
         opacity: 1;
@@ -193,203 +280,59 @@ ul li.checked::after {
 }
 
 .new-item {
-    animation: slideIn 0.3s ease forwards;
+    animation: slideIn 0.4s ease-out forwards;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-
-    .todo-app {
-        margin: 10px;
-        padding: 20px;
-    }
-
-    .todo-app h2 {
-        font-size: 1.5em;
-    }
-
-    .row {
-        flex-direction: column;
-        padding: 10px;
-        border-radius: 15px;
-    }
-
-    input {
-        width: 100%;
-        margin-bottom: 10px;
-        text-align: center;
-    }
-
-    button {
-        width: 100%;
-        padding: 12px;
-    }
-
-    ul li {
-        font-size: 15px;
-        padding: 12px 12px 12px 45px;
-    }
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-    .todo-app {
-        background: rgba(33, 33, 33, 0.95);
-    }
-
-    .todo-app h2 {
-        color: #fff;
-    }
-
-    input {
-        color: #fff;
-    }
-
-    input::placeholder {
-        color: #666;
-    }
-
-    ul li {
-        background: rgba(255, 255, 255, 0.05);
-        color: #fff;
-    }
-
-    ul li:hover {
-        background: rgba(255, 255, 255, 0.1);
-    }
-
-    ul li.checked {
-        color: #666;
-        background: rgba(255, 255, 255, 0.03);
-    }
-}
-
-/* Add these styles to your existing CSS */
-.delete-btn {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #ff5b5b;
-    color: white;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    opacity: 0;
-    transition: all 0.3s ease;
-    padding: 0;
-}
-
-ul li:hover .delete-btn {
-    opacity: 1;
-}
-
-.delete-btn:hover {
-    background: #ff3b3b;
-    transform: translateY(-50%) scale(1.1);
-}
-
-/* Add this for delete animation */
 @keyframes slideOut {
     to {
-        transform: translateX(100%);
         opacity: 0;
+        transform: translateX(100%);
     }
 }
 
 .slideOut {
-    animation: slideOut 0.3s ease forwards;
-}
-
-/* Add these styles for action buttons */
-.action-buttons {
-    display: flex;
-    margin: 20px 0;
-}
-
-.clear-btn {
-    background: #dc3545;
-    font-size: 14px;
-    padding: 12px 25px;
-    width: 100%;
-}
-
-.clear-btn:hover {
-    background: #c82333;
-}
-
-.clear-btn:disabled {
-    background: #6c757d;
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
-/* Update existing button styles to not affect clear buttons */
-#add-btn {
-    background: #667eea;
-}
-
-#add-btn:hover {
-    background: #764ba2;
-}
-
-/* Update action buttons styles */
-.action-buttons button {
-    position: relative;
-    overflow: hidden;
-}
-
-.action-buttons button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s ease, height 0.3s ease;
-}
-
-.action-buttons button:hover::before {
-    width: 200%;
-    height: 200%;
-}
-
-/* Add a strike-through animation */
-@keyframes strikethrough {
-    from {
-        width: 0;
-    }
-    to {
-        width: calc(100% - 60px);
-    }
-}
-
-/* Add a pseudo-element for animated strike-through */
-ul li.checked .todo-text {
-    position: relative;
-}
-
-ul li.checked .todo-text::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    height: 2px;
-    background: #dc3545;
-    animation: strikethrough 0.3s ease-out forwards;
+    animation: slideOut 0.3s ease-out forwards;
 }
 
 .todo-text {
-    flex: 1;
-    margin-left: 35px;
+    color: #4d6666;
+}
+
+.todo-app, .row, button, ul li {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    .todo-app {
+        background: rgba(194, 214, 214, 0.15);
+        backdrop-filter: blur(20px);
+    }
+
+    input {
+        color: #e6ffff;
+    }
+
+    .todo-text {
+        color: #e6ffff;
+    }
+
+    ul li {
+        background: rgba(230, 255, 255, 0.05);
+    }
+
+    ul li:hover {
+        background: rgba(230, 255, 255, 0.1);
+    }
+
+    ul li.checked {
+        background: rgba(194, 214, 214, 0.05);
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .container {
+        background: linear-gradient(45deg, #c2d6d6, #99ebff);
+    }
 }
