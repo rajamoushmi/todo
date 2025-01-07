@@ -30,8 +30,9 @@ function addTask() {
     const li = document.createElement('li');
     li.className = 'new-item';
     li.innerHTML = `
+        <span class="task-emoji">🔹</span>
         <span class="todo-text">${inputBox.value}</span>
-        <button class="delete-btn">×</button>
+        <button class="delete-btn">❌</button>
     `;
 
     // Add click event for marking as checked

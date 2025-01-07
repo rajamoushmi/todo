@@ -336,3 +336,54 @@ ul li.checked::after {
         background: linear-gradient(45deg, #c2d6d6, #99ebff);
     }
 }
+
+/* Add these new styles */
+.task-emoji {
+    position: absolute;
+    left: 15px;
+    font-size: 18px;
+}
+
+ul li.checked .task-emoji {
+    content: '✅';
+    opacity: 0.8;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 30px;
+    color: #88a6a6;
+    display: none;
+}
+
+.empty-state.visible {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Update these existing styles */
+.todo-app h2 {
+    font-size: 2.2em;
+    /* ... other properties remain same ... */
+}
+
+.todo-app h2 img {
+    display: none; /* Hide the image since we're using emoji */
+}
+
+ul li {
+    padding-left: 45px; /* Adjust padding for emoji */
+}
+
+/* Make emojis look better on Windows */
+@font-face {
+    font-family: 'Segoe UI Emoji';
+    src: local('Segoe UI Emoji');
+}
+
+.task-emoji, 
+.todo-app h2,
+button,
+.empty-state {
+    font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+}
